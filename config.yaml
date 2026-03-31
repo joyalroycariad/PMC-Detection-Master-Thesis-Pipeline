@@ -1,0 +1,34 @@
+data:
+  input_path: "translated_IM_dataset.xlsx"     # Path to the input dataset 
+
+translation:
+  enabled: false  # Set to true to enable translation
+  api_key: "AZURE_TRANSLATOR_KEY"  # Replace with your actual Azure Translator API key
+  region: "northeurope"
+  endpoint: "https://api.cognitive.microsofttranslator.com"
+
+embeddings:
+  model: "all-MiniLM-L6-v2"
+  batch_size: 32
+
+clustering:
+  eps: 0.14
+  min_samples: 5
+
+pmc:
+  min_tickets: 5     # Minimum number of tickets required to form a PMC cluster
+  window_days: 21   # Consider tickets from the last 21 days for PMC clustering
+  export_path: "pmc_clusters.xlsx"
+
+payload:
+  output_dir: "outputs/payloads"
+
+summarisation:
+  enabled: true    # Set to true to enable summarisation
+  prompt_file: "Joyal Roy/prompts/pmc_prompt.txt"        # Path to the prompt template file
+  client_id: "client ID"      # Your actual client ID
+  client_secret: "client secret"   # Your actual client secret
+  virtual_key: "virtual key"   # Your actual virtual key
+  model: "gpt-4.1-mini"    # The model to use for summarisation
+  limit: 2                  # Number of PMCs to summarise (set to None to summarise all)
+  output_dir: "outputs/summaries"
